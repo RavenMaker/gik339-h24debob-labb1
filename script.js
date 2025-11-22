@@ -71,7 +71,11 @@ function greet(name){// namn här är inte berorende av name utanför blocket
 }
 
 console.log(greet("Mikaela"));// anropar funktionsdeklaration med random namn som kan påvärkas som du vill
-console.log(name); // här ser du namnet som finns utanför funktionen och inte den vi sickade in i funktionen
+console.log(name); // här ser du namnet som finns utanför funktionen och inte den vi sickade in i funktionen finns
+/*med detta så kan du se att parametern inte är beroende av variabeln som sitter utanför funktionen då dom 
+fungerar helt separt ifrån varandra då det inte har något gemensamt ifrån när jag sickar in det om jag hade
+sickat in det name där "Mikaela" står så skulle name komma in där anars så fungerar dom helt separat och 
+är helt oberoende av sig och jobbar sälva utan att blir påvärkade*/
 
 /*Jag använder ett Funktionsdeklaration då jag ser det som tydligaste sättet för att ilusterara hur koden fungerar och där för använder jag det till detta,
 Funktionsdeklaration är ett bättre sätt att identifiera att något är till en funktion. Och varför jag inte valde
