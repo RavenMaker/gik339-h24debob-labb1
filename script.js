@@ -57,7 +57,9 @@ if (null === undefined) {
 } else {
     console.log("false");
 }
-
+/* NaN är en förkortning på Not a Number och den fungerar som ett nummer men den är inte ett giltigt nummer*/
+/* undefined menas med att variablen har inte blivigt till delat eller insierat över huvud taget*/
+/* Null är en syntax variabel men fungerar nästan som undefined i en del steg men inte alla*/
 console.log(undefined ? 'Truthy' : 'Falsy'); // Falsy, jämför inte undefined med något annat
 
 // uppgift 4
