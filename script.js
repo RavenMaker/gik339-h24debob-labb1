@@ -66,7 +66,7 @@ console.log(undefined ? 'Truthy' : 'Falsy'); // Falsy, jämför inte undefined m
 
 let name = "kent"; // namn finns här utanför och innuti funktionen men det påvärkar inte varandra då let blir inte att hamna inne i blocket
 function greet(name){// namn här är inte berorende av name utanför blocket
-    //console.log(name); // här ser du namnet som skickas in i funktionen och inte den som finns utanför
+    console.log(name); // här ser du namnet som skickas in i funktionen och inte den som finns utanför
     return "hej " + name;
 }
 
