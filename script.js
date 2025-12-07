@@ -77,7 +77,7 @@ Reflektions frågor svar:
 
             Specialfall:
             - null == undefined blir lika med true då det inte har något värde.
-            - NaN === NaN det är samma typ Men inte alltid false då NaN är ett sppeciellt då den aldrig kan vara lika sig själv.
+            - NaN === NaN är samma typ men trots det så är den endå false då den inte kan vara lika sig själv.
     Fråga 2:
         vad blir att hända i en ternary (?:) eller en if-sats med tuthy och Falsy?
 
@@ -136,8 +136,9 @@ Reflektions frågor svar:
             - kortare syntax
             - kan fungera med "this" 
 
-        jag valde funktionsdeklaration då den är tydligare att förstå och kunna använda den.
-    
+        jag valde funktionsdeklaration då den har en tydligare struktur och för att jag kan Kontakta innan den har definierat sig,
+        detta gör den mycket mer flexibel och lättare att kunna förstå.
+
     Fråga 2:
         när går det att kalla påå funktionerna?
             funktionsdeklaration:
