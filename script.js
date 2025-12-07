@@ -1,86 +1,174 @@
-// uppgift 2 
+// Uppgift 2
 
-//console.log(name); //hittar inte då name finns inne i blocket ned
-console.log(age);//age hittas men kan ej skrivas ut då den inte hunnit insierat ett värde ännu så den blir undefined
-//console.log(country); //hittar inte då country finns inne i blocket ned
+
+console.log(age); 
+//console.log(name);     // fungerar inte – name finns bara inne i blocket
+//console.log(country);  // fungerar inte – country finns bara inne i blocket
+/*
+    age får resultatet "undefined" här.
+    och det beror på att age variabeln existerar men finner inget värde änu.
+    anledningen är för att var-variabeln age blir att flyttas uppåt i koden.
+*/
 {
-    let name="babbaboie"; // let i ett block är inte globalt
-    const country="Sweden"; // const funngerar som let i ett block
-    var age=25; // var är golobalt i ett block som funkar globalt överallt
+    let name = "babbaboie";   // kan bara se variaben i blocket 
+    const country = "Sweden"; // kan bara se variaben i blocket
+    var age = 25;             // kan se både ute och inuti blocket
 
-    //funkar med alla då dom är i samma block
-    console.log(country); 
-    //console.log(age); 
-    console.log(name);
-    ///////////////////////////////////////////
+    console.log(country); // fungerar
+    console.log(name);    // fungerar
 }
-//console.log(name);// hitats inte då name finns inne i blocket ovan för men den får blankt men får error då namn längst ner i fillen finns och vill prata med den så den får Error
-console.log(age); // hittas då age använder var och fungerar överalt
-//console.log(country); // hitats inte då contry finns inne i blocket ovan för men den får error raport då den inte finns globalt
 
-///upgift 3
+console.log(age); // fungerar – age är deklarerad med var och finns fortfarande
+//console.log(name);     // fungerar inte – name finns bara inne i blocket
+//console.log(country);  // fungerar inte – samma sak som ovan
+/*
+
+Reflektions frågor svar:
+    Fråga 1:
+        Hur fungerar var, let och const när de ligger i ett block {} ?
+        
+            let/const kommer bara hittas inne i blocket och finnas där, Men med const så kan värdet inte bytas.
+            var blir att fungera utanför blocket och är synligt både före och efter, detta kan finna oväntade problem,
+            därför man inte brukar använda var idag så ofta.
+        
+            let/const = säkert och förutsägbart. 
+            var = gammalt och mer riskfyllt.
+
+    Fråga 2:
+        Vad händer om man skriver console.log före, i eller efter blocket?
+        
+            Före blocket:
+            let/const ger error/fungerar inte då det är utanför deras scope
+            var finns men värdet är undefined/inte identiferat ännu men är innanför scopet
+
+            I blocket:
+                alla variablar fungerar som det ska inne i scopet
+
+            Efter blocket:
+            let/const slutar att fungerar igen då det inte kan hittas längre då det är utanför scopet
+            var finns kvar dock efter åt och nu har ett värde och inne i scopet
+*/
 
 
+// Uppgift 3
 
-//varat true hära 
-if ('3' == 3) {
-    console.log("true");
-} else {
-    console.log("false");
-}
-if (null == undefined) {
-    console.log("true");
-} else {
-    console.log("false");
-} 
-//alla visar false här nere
-if (NaN == NaN) {  
-    console.log("true");
-} else {
-    console.log("false");
-}
-/*== means med att det är lika med som jämför på båda sidor och vill ha något som är lika dant*/
+console.log('3' == 3);          
+console.log(null == undefined);
+console.log(NaN == NaN);
 
-/*=== means med att värdet är av lika dant eller har lika dant typ av värde */
-if ('3' === 3) {
-    console.log("true");
-} else {
-    console.log("false");
-}
-if (NaN === NaN) {
-    console.log("true");
-} else {
-    console.log("false");
-}       
-if (null === undefined) {
-    console.log("true");
-} else {
-    console.log("false");
-}
-/* NaN är en förkortning på Not a Number och den fungerar som ett nummer men den är inte ett giltigt nummer*/
-/* undefined menas med att variablen har inte blivigt till delat eller insierat över huvud taget*/
-/* Null är en syntax variabel men fungerar nästan som undefined i en del steg men inte alla*/
-console.log(undefined ? 'Truthy' : 'Falsy'); // Falsy, jämför inte undefined med något annat
+console.log('3' === 3);
+console.log(NaN === NaN);       
+console.log(null === undefined);
 
-// uppgift 4
+console.log(undefined ? 'Truthy' : 'Falsy');
+/*
+Reflektions frågor svar:
+    Fråga 1:
+        Vad är skillnaden mellan == och === ?
 
-let name = "kent"; // namn finns här utanför och innuti funktionen men det påvärkar inte varandra då let blir inte att hamna inne i blocket
-function greet(name){// namn här är inte berorende av name utanför blocket
-    console.log(name); // här ser du namnet som skickas in i funktionen och inte den som finns utanför
+            ==:
+            - JS gissar vilken typ du menar och konverterar vid behov.
+            - Exempelvis: en sträng '3' konverteras till siffran 3 innan jämförelsen '3' == 3 som blir true.
+
+            ===:
+            - Tre lika med tecken gissar inte.
+            - kollar både typ och värde exakt.
+            - Exempelvis: så blir '3' och 3 att räknas som olika typer och där för blir '3' === 3 false.
+
+            Specialfall:
+            - null == undefined blir lika med true då det inte har något värde.
+            - NaN === NaN det är samma typ Men inte alltid false då NaN är ett sppeciellt då den aldrig kan vara lika sig själv.
+    Fråga 2:
+        vad blir att hända i en ternary (?:) eller en if-sats med tuthy och Falsy?
+
+            om vi skulle skriva bara Undefined i något av dessa villkor så skulle det se ut så här:
+                if (undefined) { ... }
+                detta gör så att JS fillen kollar om det blir sant eller falskt.
+                men då undefined är ett falskt värde så blir det Falsy.
+                och detta kan man se här med denna: 
+                    console.log(undefined ? 'Truthy' : 'Falsy');
+
+
+    Fråga 3:
+        Vad står NaN, undefined och null för?
+            
+            NaN:
+                - Förkortning för "Not a Number".
+                - Betyder att detta inte kan räknas ut som ett nummer.
+                - Den dycker upp JS och försöker göra matte med en strängar som inte är siffror.
+                - exempel viss så skulle detta betyda NaN: 0/0 då det inte går att räkna ut.
+
+            undefined:
+                - betyder bara att variabeln finns men har inget värde satt änu.
+
+            null:
+                - betyder att variabeln medvetet har inget värde.
+*/
+
+
+//Uppgift 4 
+
+
+let name = "kent"; // variabeln är nu global i detta skript
+
+function greet(name) {  // name i funktionen är en parameter
+    console.log(name);  // har ser vi parametens argument som sickas in
     return "hej " + name;
 }
 
-console.log(greet("Mikaela"));// anropar funktionsdeklaration med random namn som kan påvärkas som du vill
-console.log(name); // här ser du namnet som finns utanför funktionen och inte den vi sickade in i funktionen finns
-/*med detta så kan du se att parametern inte är beroende av variabeln som sitter utanför funktionen då dom 
-fungerar helt separt ifrån varandra då det inte har något gemensamt ifrån när jag sickar in det om jag hade
-sickat in det name där "Mikaela" står så skulle name komma in där anars så fungerar dom helt separat och 
-är helt oberoende av sig och jobbar sälva utan att blir påvärkade*/
+console.log(greet("Mikaela")); // vårat argument vi skicade in är Mikaela
+console.log(name);  // här sickat den globala variabeln ut i konsolen som är kent
 
-/*Jag använder ett Funktionsdeklaration då jag ser det som tydligaste sättet för att ilusterara hur koden fungerar och där för använder jag det till detta,
-Funktionsdeklaration är ett bättre sätt att identifiera att något är till en funktion. Och varför jag inte valde
-Funktionsutryck är ett extra stepp till att kontakta den i jämförelse ifrån funktionsdeklaration då du använder en variabel du sparar och
-kontaktr på samma sätt som Funktionsdeklaration men med extra steps, och varför jag inte använder arrowfunktion
-är för att den inte ser super tydlig ut på att den är en funktion då den används med en variabel som du sedan sättr ihop med något insick som ser ut så här
-är ett exempel "variabelnamn = (parameter) => retun" i short turm så har du någon variabel typ där Variabelnamn är som exempel vis const och parameter kan 
-vara name och return är ilustartion för en snabb visning är här är hur den ska sicka ut formatet sättet du är ute efter */
+
+
+/*
+Reflektions frågor svar:
+    Vad är skilnaden mellan det olika funktionerna?
+    Fråga 1:
+        funktionsdeklaration:
+            - kan man anropa före den står i koden.
+        
+        funktionsuttryck:
+            - du kan bara användas den efter du har skapat den först.
+
+
+        arrowfunktion:
+            - kortare syntax
+            - kan fungera med "this" 
+
+        jag valde funktionsdeklaration då den är tydligare att förstå och kunna använda den.
+    
+    Fråga 2:
+        när går det att kalla påå funktionerna?
+            funktionsdeklaration:
+                - det går att anropa den när som helst i koden.
+            
+            funktionsuttryck/arrowfunktion:
+                - du kan bara kalla på den efter den har initerats.
+
+    Fråga 3:
+        vad skulle hända ifalla man skulle ändra variabel name?
+
+            Inne i funktionen:
+                - name är parameten du blir att sicka in till den.
+            
+            Utanför funktionen:
+                - name blir en global variabel.
+            
+            dessa två "name" blir inte att påverka varandra.
+            det är oberoende av varandra trots att det är samma namn på dom.
+    Fråga 4:
+        Vad det som skiljer mellan variabel, parameter och argument?
+
+        variabel:
+            - är som en box som du kan lagra ett värde i sig.
+            - exempel: let age = 20;
+        
+        parameter:
+            - är namnet på variaben innuti en funktion.
+            - exempel: function greet(name) och då är name parametern.
+
+        argument:
+            - detta är de faktiska värdet du blir att sicka in till funktionen.
+            - exempel: greet("Mikaela") då blir "Mikaela" ett argument.
+*/
